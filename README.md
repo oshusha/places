@@ -32,3 +32,7 @@ npm run dev
 ```
 
 2\. Open [localhost:8080](http://localhost:8080) to see the live app.
+
+
+live demo:
+https://oshusha.github.io/places
