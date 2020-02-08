@@ -22,7 +22,6 @@ npm install
 npm run build
 ```
 
-and follow the instructions.
 
 **Launch the app**
 
