@@ -13,7 +13,7 @@ cd places
 
 2\. Change the branch to develop
 ```bash
-git branch develop
+git checkout develop
 ```
 
 3\. Install the dependencies:
