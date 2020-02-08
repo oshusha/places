@@ -8,15 +8,21 @@
 
 ```bash
 git clone https://github.com/oshusha/places.git
+cd places
 ```
 
-2\. Install the dependencies:
+2\. Change the branch to develop
+```bash
+git branch develop
+```
+
+3\. Install the dependencies:
 
 ```bash
 npm install
 ```
 
-3\. Build the app
+4\. Build the app
 
 ```
 npm run build
