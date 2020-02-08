@@ -6,8 +6,9 @@
 
 1\. Clone the repository:
 
-```
+```bash
 git clone https://github.com/oshusha/places.git
+```
 
 2\. Install the dependencies:
 
