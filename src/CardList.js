@@ -1,10 +1,3 @@
-// Надо исправить : При инициализации класса передавайте в качестве пераметров ранее инициализированный класс Card
-//const cardList = new CardList(card);
-// Далее в классе вы сможите использовате методы класса Card
-
-// Вызов добавления карточки
-// container куда записывать карточку
-// cardList.render(container, cards);
 class CardList {
     constructor(props,card) {
         this._container = props.container;
@@ -35,3 +28,5 @@ class CardList {
     }
 
 }
+
+export default CardList

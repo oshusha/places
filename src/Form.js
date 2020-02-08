@@ -19,3 +19,6 @@ class Form extends Popup {
         return this;
     }
 }
+
+export default Form
+import Popup from "./Popup";

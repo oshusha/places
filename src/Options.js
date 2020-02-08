@@ -90,3 +90,5 @@ const optionsPopupProfile = {
     userInfoJobField: document.querySelector('.user-info__job'),
     avatar:document.querySelector('.user-info__photo')
 };
+
+export {errorsText,root,placeContainer,apiOptions,optionsCardList,optionsPopupImage,optionsPopupCard,optionsPopupAvatar,optionsPopupProfile,newForm,profileForm,avatarForm};
