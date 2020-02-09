@@ -17,3 +17,5 @@ class PopupImage extends Popup {
 
 
 }
+export default PopupImage
+import Popup from "./Popup";

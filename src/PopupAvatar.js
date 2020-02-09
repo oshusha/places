@@ -36,3 +36,7 @@ class PopupAvatar extends Form {
         this._close();
     }
 }
+
+export default PopupAvatar
+import Form from "./Form";
+import {api,user} from "./index"

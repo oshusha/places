@@ -50,3 +50,7 @@ class PopupProfile extends Form {
 
 
 }
+
+export default PopupProfile
+import Form from "./Form";
+import {api,user} from "./index"

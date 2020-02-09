@@ -68,3 +68,5 @@ class Api {
         return this._fetch(`${this._url}${this._groupId}${resource}`, this._methods.post, data)
     }
 }
+
+export default Api
