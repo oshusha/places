@@ -27,4 +27,5 @@ class PopupCard extends Form {
 
 export default PopupCard
 import Form from "./Form";
-import {api,user} from "./index"
+import {api,user} from "./index";
+import Card from "./Card";
