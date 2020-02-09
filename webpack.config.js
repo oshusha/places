@@ -77,4 +77,5 @@ module.exports = {
         port: 8080, // port to run dev-server
 
     }
-}
+};
+

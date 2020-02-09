@@ -1,7 +1,9 @@
+
 const ERROR_REQUIRE_TEXT = 'Это обязательное поле';
 const ERROR_LENGTH_TEXT = 'Должно быть от 2 до 30 символов';
 const ERROR_LINK_TEXT = 'Здесь должна быть ссылка';
 const ERROR_LINK_IMG = "Здесь должна быть ссылка на картинку";
+const isDev = process.env.NODE_ENV === 'development';
 //errors which passed throw validator instance
 const errorsText = {
     valueMissing: ERROR_REQUIRE_TEXT,
@@ -20,9 +22,9 @@ const placeContainer = document.querySelector('div.places-list');
 const newForm = document.forms.new;
 const profileForm = document.forms.profile;
 const avatarForm = document.forms.avatar;
-
+const url = (isDev) ? 'http://praktikum.tk/' : "https://praktikum.tk/";
 const apiOptions = {
-    url:'http://95.216.175.5/',
+    url:url,
     groupId:'cohort6',
     resources:{
         cards:'/cards',
