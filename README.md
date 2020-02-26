@@ -11,6 +11,11 @@ git clone https://github.com/oshusha/places.git
 cd places
 ```
 
+2\. Checkout to the develop branch:
+
+```bash
+git checkout develop
+```
 
 2\. Install the dependencies:
 
@@ -27,14 +32,29 @@ npm run build
 
 **Launch the app**
 
-1\. Run the development server:
+1\. Run the development server 
 
+In development mode with hot reload:
 ```bash
 npm run dev
 ```
+In production mode:
+```bash
+npm run start
+```
 
-2\. Open [localhost:8080](http://localhost:8080) to see the live app.
+2\. Open [localhost:3000](http://localhost:3000) to see the live app.
 
 
-live demo:
-https://oshusha.github.io/places
+
+`By default, this app runs on port 3000.
+To change the default port the nodejs app instance is listening on, 
+simply export the env variable before start the app:`
+
+ex:
+```bash
+export PORT=3333
+npm run start
+```
+
+[DEMO](https://oshusha.github.io/places/)
