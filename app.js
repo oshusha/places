@@ -1,28 +1,24 @@
 const express = require('express');
 const path = require('path');
-const cookieParser = require('cookie-parser');
-const logger = require('morgan');
-const httpErrors = require('http-errors')
+const bodyParser = require('body-parser');
 
+const users = require('./routes/users');
+const cards = require('./routes/cards');
 
-const usersRouter = require('./routes/users');
-const cardsRouter = require('./routes/cards');
-
+const { PORT = 3000 } = process.env;
 const app = express();
 
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/users', usersRouter);
-app.use('/cards', cardsRouter);
+app.use('/users', users);
+app.use('/cards', cards);
+app.use('/', (req, res) => {
+  res.status(404).send({ message: 'Запрашиваемый ресурс не найден' });
+});
 
-app.use((req, res, next) => {
-  res.status(404).json({ "message": "Запрашиваемый ресурс не найден"})
-
-})
-
-module.exports = app;
+app.listen(PORT, () => {
+  console.log(`Слушаю порт ${PORT}`);
+});

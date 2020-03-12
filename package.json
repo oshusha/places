@@ -15,8 +15,8 @@
     "resolve-cwd": "^3.0.0"
   },
   "scripts": {
-    "start": "node ./bin/www",
-    "dev": "nodemon ./bin/www",
+    "start": "node app.js",
+    "dev": "nodemon app.js",
     "build": "rimraf dist && cross-env NODE_ENV=production webpack --mode production",
     "deploy": "NODE_ENV=production gh-pages -d public"
   },

@@ -1,12 +1,4 @@
-#!/usr/bin/env node
-  /**
-   * Module dependencies.
-   */
-  const app = require('../app'), debug = require('debug')('places:server'), http = require('http');
 
-/**
- * Get port from environment and store in Express.
- */
 
 const { PORT = 3000 } = process.env;
 /**

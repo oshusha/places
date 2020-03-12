@@ -1,23 +1,29 @@
-const express = require('express');
-const router = express.Router();
-const users = require('../data/users.json')
-/* GET users listing. */
+const router = require('express').Router();
+const fsPromises = require('fs').promises;
+
+const users = fsPromises.readFile('../data/users.json', { encoding: 'utf8' });
+
 router.get('/', (req, res, next) => {
-  res.json(users);
+  users.then((data) => {
+    res.send(data);
+  })
+    .catch((err) => {
+      console.log(`Данные пользователей не могут быть прочитаны. Возникла ошибка: ${err}`);
+    });
 });
 
 router.get('/:id', (req, res) => {
-  const id = req.params.id;
+  const userId = req.params.id;
+  const userIsFind = users.find(user => user._id === userId);
 
-  // eslint-disable-next-line no-underscore-dangle
-  const isFind = users.find(user => user._id === id);
-
-  if (isFind) {
-    return res.json(isFind);
-  }
-
-  return res.status(404).json({ message: 'Нет пользователя с таким id' });
+  users.then((data) => {
+    if(userIsFind) {
+      res.send(userIsFind);
+    }
+  })
+    .catch((err) => {
+      res.status(404).send({ message: `Нет пользователя с таким id'. Возникла ошибка: ${err}` });
+    });
 });
-
 
 module.exports = router;
