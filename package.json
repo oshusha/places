@@ -5,6 +5,7 @@
   "dependencies": {
     "acorn": "^7.1.1",
     "babel-polyfill": "^6.26.0",
+    "body-parser": "^1.19.0",
     "core-js": "^3.4.1",
     "debug": "~2.6.9",
     "express": "~4.16.1",
@@ -25,6 +26,7 @@
     "@babel/core": "^7.8.7",
     "@babel/preset-env": "^7.8.7",
     "autoprefixer": "^9.7.4",
+    "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.4",
     "cross-env": "^7.0.2",
     "cssnano": "^4.1.10",
