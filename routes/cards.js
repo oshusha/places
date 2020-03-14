@@ -1,16 +1,17 @@
-const router = require('express').Router();
-const fsPromises = require('fs').promises;
+const fs = require('promise-fs');
+const express = require('express');
 
-const cards = fsPromises.readFile('../data/cards.json', { encoding: 'utf8' });
+const router = express.Router();
+
+const path = require('path');
+
+const cardsPath = path.join(__dirname, '../data/cards.json');
+
 
 router.get('/', (req, res) => {
-  cards.then((data) => {
-    res.send(data);
-  })
-    .catch((err) => {
-      // eslint-disable-next-line no-console
-      console.log(`Карточки не могут быть прочитаны. Возникла ошибка: ${err}`);
-    });
+  fs.readFile(cardsPath).then((data) => res.json(JSON.parse(data)))
+    .catch((err) => res.status(500).json({ error: err.message }));
 });
+
 
 module.exports = router;

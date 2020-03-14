@@ -1,30 +1,42 @@
-const router = require('express').Router();
-const fsPromises = require('fs').promises;
+const fs = require('promise-fs');
+const express = require('express');
 
-const users = fsPromises.readFile('../data/users.json', { encoding: 'utf8' });
+const router = express.Router();
+
+/* GET users listing. */
+const path = require('path');
+
+const usersPath = path.join(__dirname, '../data/users.json');
+
 
 router.get('/', (req, res) => {
-  users.then((data) => {
-    res.send(data);
-  })
-    .catch((err) => {
-      // eslint-disable-next-line no-console
-      console.log(`Данные пользователей не могут быть прочитаны. Возникла ошибка: ${err}`);
-    });
+  fs.readFile(usersPath)
+    .then((data) => res.json(JSON.parse(data)))
+    .catch((err) => res.status(500).json({ message: err.message }));
 });
 
-router.get('/:id', (req, res) => {
-  const userId = req.params.id;
-  const userIsFind = users.find(user => user._id === userId);
 
-  users.then((data) => {
-    if (userIsFind) {
-      res.send(userIsFind);
+router.get('/:id', async (req, res) => {
+  try {
+    const data = await fs.readFile(usersPath, 'utf8');
+    const user = JSON.parse(data)
+      // eslint-disable-next-line array-callback-return,consistent-return
+      .find((dataUser) => {
+        // eslint-disable-next-line no-underscore-dangle
+        if (dataUser._id === req.params.id) {
+          return dataUser;
+        }
+      });
+    if (user) {
+      res.json({ data: user });
+    } else {
+      res.status(404)
+        .json({ message: 'Пользователь не найден' });
     }
-  })
-    .catch((err) => {
-      res.status(404).send({ message: `Нет пользователя с таким id'. Возникла ошибка: ${err}` });
-    });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
 });
+
 
 module.exports = router;
